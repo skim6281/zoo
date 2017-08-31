@@ -9,12 +9,15 @@ class AnimalsController < ApplicationController
   def create
     # TODO: Adjust the logic to send an error message if submission is invalid.
 
-    @animal = Animal.create(
+    @animal = Animal.new(
       name: params[:animalName]
     )
-
-    render json: {
-      message: "success!"
-    }, status: 200
+    if @animal.save
+      render json: {
+        message: "success!"
+      }, status: 200
+    else
+      render json: @animal.errors.full_messages, status: 422
+    end
   end
 end
