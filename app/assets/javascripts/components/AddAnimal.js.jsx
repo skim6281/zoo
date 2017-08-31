@@ -34,11 +34,18 @@ class AddAnimal extends React.Component {
       success: (function(data) {
         console.log('success')
         console.log(data)
-        this.setState({formSuccessMessage: data.message});
+        this.setState({
+          formSuccessMessage: data.message,
+          formErrorMessage: ''
+        });
       }).bind(this),
       error: (data) => {
         console.log('error')
         console.log(data)
+        this.setState({
+          formErrorMessage: data.responseJSON[0],
+          formSuccessMessage: ''
+        });
       }
     })
   }
@@ -48,8 +55,8 @@ class AddAnimal extends React.Component {
       <div
         className="add-animal-form"
       >
-        <ErrorMessage />
-        <SuccessMessage />
+        <ErrorMessage message={this.state.formErrorMessage}/>
+        <SuccessMessage message={this.state.formSuccessMessage}/>
         <div
           className="form-group"
         >

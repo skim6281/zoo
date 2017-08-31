@@ -4,7 +4,11 @@ class SuccessMessage extends React.Component {
   }
 
   render() {
-    return null
+    // return null
+    if(this.props.message === '') {
+      return null;
+    } else {
+      return <div>{this.props.message}</div>
+    }
   }
 }
-

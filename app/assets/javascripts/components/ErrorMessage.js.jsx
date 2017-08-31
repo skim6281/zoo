@@ -4,7 +4,10 @@ class ErrorMessage extends React.Component {
   }
 
   render() {
-    return null
+    if(this.props.message === '') {
+      return null;
+    } else {
+      return <div>{this.props.message}</div>
+    }
   }
 }
-
