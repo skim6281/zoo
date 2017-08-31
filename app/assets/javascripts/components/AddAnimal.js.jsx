@@ -31,14 +31,14 @@ class AddAnimal extends React.Component {
       }),
       // TODO: Fix the success callback to properly set the state.
       // Why doesn't it work as currently implemented?
-      success: (function(data) {
+      success: (data) => {
         console.log('success')
         console.log(data)
         this.setState({
           formSuccessMessage: data.message,
           formErrorMessage: ''
         });
-      }).bind(this),
+      },
       error: (data) => {
         console.log('error')
         console.log(data)
