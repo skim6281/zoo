@@ -31,11 +31,11 @@ class AddAnimal extends React.Component {
       }),
       // TODO: Fix the success callback to properly set the state.
       // Why doesn't it work as currently implemented?
-      success: function(data) {
+      success: (function(data) {
         console.log('success')
         console.log(data)
-        this.setState({formSuccessMessage: data.message})
-      },
+        this.setState({formSuccessMessage: data.message});
+      }).bind(this),
       error: (data) => {
         console.log('error')
         console.log(data)
@@ -77,4 +77,3 @@ class AddAnimal extends React.Component {
     )
   }
 }
-
